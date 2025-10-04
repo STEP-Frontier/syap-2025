@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-constexpr int SDA_PIN = 4;
-constexpr int SCL_PIN = 5;
+constexpr int SDA_PIN = 4; // SDAのピン
+constexpr int SCL_PIN = 5; // SCLのピン
 
 constexpr uint8_t SENSOR_ADDR = 0x68; // ICM-20948 の AD0=Low 時 I2C アドレス
 constexpr uint8_t REG_BANK_SEL = 0x7F;
@@ -68,10 +68,6 @@ bool init_sensor()
 void setup()
 {
   Serial.begin(115200);
-  while (!Serial)
-  {
-    ; // シリアルポートの接続を待つ
-  }
 
   Serial.println("Hello World! from practice-2");
 
@@ -91,4 +87,6 @@ void setup()
 
 void loop()
 {
+  Serial.println("Hello World! from practice-2");
+  delay(1000);
 }

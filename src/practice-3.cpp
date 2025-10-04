@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-constexpr int SDA_PIN = 4;
-constexpr int SCL_PIN = 5;
+constexpr int SDA_PIN = 4; // SDAのピン
+constexpr int SCL_PIN = 5; // SCLのピン
 
 constexpr uint8_t SENSOR_ADDR = 0x68; // ICM-20948 の AD0=Low 時 I2C アドレス
 constexpr uint8_t REG_BANK_SEL = 0x7F;
@@ -68,10 +68,6 @@ bool init_sensor()
 void setup()
 {
   Serial.begin(115200);
-  while (!Serial)
-  {
-    ; // シリアルポートの接続を待つ
-  }
 
   Serial.println("Hello World! from practice-2");
 
@@ -91,6 +87,7 @@ void setup()
 
 void loop()
 {
+  // X軸方向の加速度を取得
   set_bank(0);
   byte accel_x_h;
   byte accel_x_l;
@@ -100,6 +97,7 @@ void loop()
   int16_t raw_accel_x = (int16_t)((accel_x_h << 8) | accel_x_l);
   double accel_x = raw_accel_x / 16384.0;
 
+  // Y軸方向の加速度を取得
   set_bank(0);
   byte accel_y_h;
   byte accel_y_l;
@@ -109,6 +107,7 @@ void loop()
   int16_t raw_accel_y = (int16_t)((accel_y_h << 8) | accel_y_l);
   double accel_y = raw_accel_y / 16384.0;
 
+  // Z軸方向の加速度を取得
   set_bank(0);
   byte accel_z_h;
   byte accel_z_l;
@@ -118,7 +117,7 @@ void loop()
   int16_t raw_accel_z = (int16_t)((accel_z_h << 8) | accel_z_l);
   double accel_z = raw_accel_z / 16384.0;
 
-  // printf形式でx, y, zの値を同時に表示
+  // x, y, zの値を同時に表示
   Serial.printf("Accel (X, Y, Z): %.3f, %.3f, %.3f\n", accel_x, accel_y, accel_z);
 
   delay(500);
