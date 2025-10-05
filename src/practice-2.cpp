@@ -7,7 +7,7 @@ constexpr int SCL_PIN = 9; // SCLのピン
 constexpr uint8_t SENSOR_ADDR = 0x68; // ICM-20948 の AD0=Low 時 I2C アドレス
 constexpr uint8_t REG_BANK_SEL = 0x7F;
 constexpr uint8_t UB0_WHO_AM_I = 0x00;
-constexpr uint8_t REG_PWR_MGMT_1 = 0x00;
+constexpr uint8_t REG_PWR_MGMT_1 = 0x06;
 constexpr uint8_t REG_ACCEL_CONFIG = 0x14;
 constexpr uint8_t REG_ACCEL_XOUT_H = 0x2D; // USER BANK 0
 constexpr uint8_t REG_ACCEL_XOUT_L = 0x2E; // USER BANK 0
