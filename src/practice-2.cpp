@@ -61,6 +61,10 @@ bool init_sensor()
   write_register(REG_PWR_MGMT_1, 0x01);
   delay(100);
 
+  // 磁力計の設定
+  set_bank(0);
+  write_register(REG_INT_PIN_CFG, 0x02);
+
   Serial.println("Sensor initialized successfully");
   return true;
 }
